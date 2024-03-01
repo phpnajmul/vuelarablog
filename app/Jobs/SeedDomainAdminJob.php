@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,9 +18,10 @@ class SeedDomainAdminJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct()
+    protected Tenant $tenant;
+    public function __construct(Tenant $tenant)
     {
-        //
+        $this->tenant = $tenant;
     }
 
     /**
