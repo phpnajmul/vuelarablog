@@ -9,7 +9,7 @@ use Inertia\Inertia;
 class TenancyRegisterController extends Controller
 {
     public function create(){
-        return Inertia::render('Create_Domain', ['domain' => config('tenancy.central_domains')[1]]);
+        return Inertia::render('Create_Domain', ['domain' => config('tenancy.central_domains')[2]]);
     }
 
     public function store(StoreDomainRequest $request){
@@ -21,12 +21,7 @@ class TenancyRegisterController extends Controller
 
         //dd($tenant);
 
-        $notification = array([
-            'message' => 'Domain Create Successfully!',
-            'alert-type' => 'success'
-        ]);
-
-        return redirect()->route('dashboard')->with($notification);
+        return redirect()->route('dashboard');
     }
 
 

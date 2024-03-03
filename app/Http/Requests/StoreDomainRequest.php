@@ -34,7 +34,7 @@ class StoreDomainRequest extends FormRequest
     public function prepareForValidation()
     {
         $this->merge([
-            'domain' => $this->domain.'.'.config('tenancy.central_domains')[1]
+            'domain' => $this->domain.'.'.config('tenancy.central_domains')[2]
         ]);
     }
 }
