@@ -6,6 +6,9 @@ import Header from "@/Pages/Tenant/Website/Backend/Layouts/Header.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 
+const props = defineProps({
+    settings: Object
+})
 
 const form = useForm({
     logo: '',
@@ -46,6 +49,7 @@ const submit = () => {
 <template>
     <Head title="Settings"/>
 
+
     <Header/>
     <div class="container flex justify-between mx-auto gap-4 py-2 items-center">
         <div class="w-1/4 min-h-screen">
@@ -60,18 +64,10 @@ const submit = () => {
                     <h1>Software Menu<span> > </span>Software Setup</h1>
                 </div>
 
-                <div class="bg-white shadow-md py-6 px-10 rounded-md">
+                <div v-if="props.settings.length === 0" class="bg-white shadow-md py-6 px-10 rounded-md">
                     <div class="border-b border-gray-900/10">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Settings Information</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600">You can change your website everything.</p>
-                        <Transition
-                            enter-active-class="transition ease-in-out"
-                            enter-from-class="opacity-0"
-                            leave-active-class="transition ease-in-out"
-                            leave-to-class="opacity-0"
-                        >
-                            <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 text-right">Your website settings successfully</p>
-                        </Transition>
                         <div class="mt-10 grid grid-cols-1 gap-x-6 sm:grid-cols-6">
                             <div class="sm:col-span-2">
                                 <label class="block text-sm font-medium leading-6 text-gray-900">Logo</label>
@@ -183,10 +179,11 @@ const submit = () => {
                         </div>
 
                     </div>
-                <div class="mt-6 flex items-center justify-end gap-x-6">
-                    <PrimaryButton type="submit"  :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</PrimaryButton>
+                    <div class="mt-6 flex items-center justify-end gap-x-6">
+                        <PrimaryButton type="submit"  :class="{ 'opacity-25': form.processing }" :disabled="form.processing" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</PrimaryButton>
+                    </div>
                 </div>
-                </div>
+                <span v-else class="rounded-md px-3 py-2 text-sm text-green-500">Already setuped. you can make changes to any, please take a look at the <span class="font-bold">'Update Settings'</span> menu.</span>
             </form>
         </div>
     </div>

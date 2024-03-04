@@ -18,7 +18,8 @@ class SettingsController extends Controller
 
     public function allSettings(){
         //dd($setting);
-        return Inertia::render('Tenant/Website/Backend/Settings');
+        $settings = Settings::all();
+        return Inertia::render('Tenant/Website/Backend/Settings', ['settings' => $settings]);
     }
 
     public function storeAllSettings(Request $request){
@@ -78,8 +79,7 @@ class SettingsController extends Controller
         $data->added_by = Auth::id();
         $data->save();
 
-
-        return Redirect::route('all.settings');
+        return Redirect::route('dashboard');
 
     }
 

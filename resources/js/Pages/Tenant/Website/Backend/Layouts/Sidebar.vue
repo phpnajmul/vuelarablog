@@ -1,6 +1,7 @@
 <script setup>
-
 import NavLink from "@/Components/NavLink.vue";
+
+
 </script>
 
 <template>
@@ -25,6 +26,7 @@ import NavLink from "@/Components/NavLink.vue";
                         </NavLink>
 
                     </li>
+
                     <li>
 
                         <a href="#" >
