@@ -1,29 +1,31 @@
 <script setup>
-import icon from "../../../../public/assets/logo.png"
-import search from "../../../../public/assets/search.png"
-import lock from "../../../../public/assets/lock.png"
-import play from "../../../../public/assets/play.png"
-import natural from "../../../../public/assets/natural.jpg"
-import down from "../../../../public/assets/down.png"
-import career1 from "../../../../public/assets/career1.png"
-import career2 from "../../../../public/assets/career2.png"
-import career3 from "../../../../public/assets/career3.png"
-import career4 from "../../../../public/assets/career4.png"
-import career5 from "../../../../public/assets/career5.png"
-import career6 from "../../../../public/assets/career6.png"
-import states from "../../../../public/assets/states.png"
-import meeting from "../../../../public/assets/meeting.png"
-import team from "../../../../public/assets/team.png"
-import shape from "../../../../public/assets/shape.png"
-import facebook from "../../../../public/assets/facebook.png"
-import twitter from "../../../../public/assets/twitter.png"
-import github from "../../../../public/assets/github.png"
-import dribble from "../../../../public/assets/dribble.png"
+import icon from "../../../../../../public/assets/logo.png"
+import search from "../../../../../../public/assets/search.png"
+import lock from "../../../../../../public/assets/lock.png"
+import play from "../../../../../../public/assets/play.png"
+import natural from "../../../../../../public/assets/natural.jpg"
+import down from "../../../../../../public/assets/down.png"
+import career1 from "../../../../../../public/assets/career1.png"
+import career2 from "../../../../../../public/assets/career2.png"
+import career3 from "../../../../../../public/assets/career3.png"
+import career4 from "../../../../../../public/assets/career4.png"
+import career5 from "../../../../../../public/assets/career5.png"
+import career6 from "../../../../../../public/assets/career6.png"
+import states from "../../../../../../public/assets/states.png"
+import meeting from "../../../../../../public/assets/meeting.png"
+import team from "../../../../../../public/assets/team.png"
+import shape from "../../../../../../public/assets/shape.png"
+import facebook from "../../../../../../public/assets/facebook.png"
+import twitter from "../../../../../../public/assets/twitter.png"
+import github from "../../../../../../public/assets/github.png"
+import dribble from "../../../../../../public/assets/dribble.png"
+import {Head} from "@inertiajs/vue3";
 
 
 </script>
 
 <template>
+    <Head title="Welcome" />
     <!--Navigation Start-->
     <nav class="container mx-auto flex gap-4 items-center py-2 flex-col md:flex-row">
         <img :src="icon" alt="Easy IT" class="w-[80px] h-[80px] rounded-full border-2 border-primary" />

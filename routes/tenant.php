@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Http\Controllers\Tenant\Backend\SettingsController;
 use App\Http\Controllers\Tenant\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,20 +27,25 @@ Route::middleware([
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
     Route::get('/', function () {
-        return Inertia::render('Website/Welcome');
+        return Inertia::render('Tenant/Website/Frontend/Welcome');
     });
 
 
     Route::get('/dashboard', function () {
-        return Inertia::render('Website/Backend/Dashboard');
+        return Inertia::render('Tenant/Website/Backend/Dashboard');
     })->middleware(['auth', 'verified'])->name('dashboard');
 
+    Route::get('logout', [SettingsController::class,'logout'])->name('logout');
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
+
+
+
+
 
 
 
