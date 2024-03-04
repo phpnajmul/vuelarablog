@@ -1,5 +1,6 @@
 <script setup>
 import {Link} from "@inertiajs/vue3";
+import NavLink from "@/Components/NavLink.vue";
 
 function myBtn() {
     let element = document.getElementById("toggle-menu");
@@ -9,12 +10,9 @@ function myBtn() {
 
 </script>
 
-<template>
-<!--    @php-->
-<!--    $prefix = Request::route()->getPrefix();-->
-<!--    $route = Route::current()->getName();-->
-<!--    @endphp-->
+<Head title="Settings"/>
 
+<template>
     <main>
         <nav class="bg-gray-800">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -26,8 +24,8 @@ function myBtn() {
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                                <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
-                                <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Settings</a>
+                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</NavLink>
+                                <NavLink :href="route('view.settings')" :active="route().current('view.settings')" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Settings</NavLink>
                                 <a href="#" class=" text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
                                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
                                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Reports</a>

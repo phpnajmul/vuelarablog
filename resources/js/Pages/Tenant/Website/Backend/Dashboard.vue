@@ -3,11 +3,12 @@ import Sidebar from "@/Pages/Tenant/Website/Backend/Layouts/Sidebar.vue";
 import Footer from "@/Pages/Tenant/Website/Backend/Layouts/Footer.vue";
 import Header from "@/Pages/Tenant/Website/Backend/Layouts/Header.vue";
 import {Head} from "@inertiajs/vue3";
+import Settings from "@/Pages/Tenant/Website/Backend/Settings.vue";
 
 </script>
 
 <template>
-    <Head><title>Dashboard</title></Head>
+    <Head title="Dashboard"/>
 
     <Header/>
     <div class="container flex justify-between mx-auto gap-2 py-2 items-center">
@@ -19,6 +20,7 @@ import {Head} from "@inertiajs/vue3";
 
         <div class="w-3/4 min-h-screen pl-2 py-1">
             <h1>Dashboard</h1>
+
         </div>
     </div>
 

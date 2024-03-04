@@ -43,7 +43,12 @@ Route::middleware([
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     });
 
+    // Settings all routes Start
+    Route::prefix('settings')->group(function (){
+       Route::get('view', [SettingsController::class, 'view'])->name('view.settings');
+    });
 
+    // Settings all routes End
 
 
 
