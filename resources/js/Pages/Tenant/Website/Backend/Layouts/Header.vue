@@ -25,7 +25,7 @@ function myBtn() {
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</NavLink>
-                                <NavLink :href="route('view.settings')" :active="route().current('view.settings')" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Settings</NavLink>
+                                <NavLink :href="route('all.settings')" :active="route().current('all.settings')" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium">Settings</NavLink>
                                 <a href="#" class=" text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
                                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
                                 <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Reports</a>

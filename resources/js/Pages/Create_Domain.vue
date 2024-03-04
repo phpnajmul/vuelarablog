@@ -8,7 +8,7 @@ import { Head, useForm } from '@inertiajs/vue3';
 
 
 const props = defineProps({
-    domain: Array
+    domain: String
 });
 
 

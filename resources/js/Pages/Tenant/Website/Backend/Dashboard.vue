@@ -3,7 +3,7 @@ import Sidebar from "@/Pages/Tenant/Website/Backend/Layouts/Sidebar.vue";
 import Footer from "@/Pages/Tenant/Website/Backend/Layouts/Footer.vue";
 import Header from "@/Pages/Tenant/Website/Backend/Layouts/Header.vue";
 import {Head} from "@inertiajs/vue3";
-import Settings from "@/Pages/Tenant/Website/Backend/Settings.vue";
+
 
 </script>
 
