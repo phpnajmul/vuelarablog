@@ -37,6 +37,10 @@ Route::middleware([
 
     Route::get('logout', [SettingsController::class,'logout'])->name('logout');
 
+    //get settings data on axios
+    Route::get('getData', [SettingsController::class,'getData']);
+    //get settings data on axios
+
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -47,6 +51,7 @@ Route::middleware([
     Route::prefix('settings')->group(function (){
        Route::get('all', [SettingsController::class, 'allSettings'])->name('all.settings');
        Route::post('all/store', [SettingsController::class, 'storeAllSettings'])->name('all.setting.store');
+        Route::get('all/edit', [SettingsController::class, 'editAllSettings'])->name('all.setting.edit');
     });
 
     // Settings all routes End

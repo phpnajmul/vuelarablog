@@ -19,13 +19,10 @@ class SettingsController extends Controller
     public function allSettings(){
         //dd($setting);
         $settings = Settings::all();
-        return Inertia::render('Tenant/Website/Backend/Settings', ['settings' => $settings]);
+        return Inertia::render('Tenant/Website/Backend/Settings/Settings', ['settings' => $settings]);
     }
 
     public function storeAllSettings(Request $request){
-
-        //dd($request);
-        //dd($request->toArray());
 
         $validated = $request->validate([
             'logo'              => 'nullable|image|mimes:jpeg,jpg,png,gif',
@@ -82,6 +79,29 @@ class SettingsController extends Controller
         return Redirect::route('dashboard');
 
     }
+//get settings data from axios
+    public function getData(){
+        $settings = Settings::all();
+
+        return response()->json([
+            'settings' => $settings
+        ], 200);
+
+    }
+
+    public function editAllSettings(){
+
+        $settings = Settings::all();
+        return Inertia::render('Tenant/Website/Backend/Settings/EditSettings', ['settings' => $settings]);
+    }
+
+
+
+
+
+
+
+
 
 
 

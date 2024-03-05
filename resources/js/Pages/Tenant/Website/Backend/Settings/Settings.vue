@@ -25,22 +25,23 @@ const form = useForm({
 })
 
 const submit = () => {
-    form.post(route('all.setting.store'), {
-        onFinish: () => form.reset(
-                'logo',
-                'heading',
-                'title',
-                'cholak',
-                'image',
-                'footer_logo',
-                'footer_logo_title',
-                'facebook',
-                'twitter',
-                'github',
-                'dribble'
-        ),
-
-    });
+    form.post(route('all.setting.store'),{
+        onFinish: () => form.reset(),
+        // 'logo',
+        // 'heading',
+        // 'title',
+        // 'cholak',
+        // 'image',
+        // 'footer_logo',
+        // 'footer_logo_title',
+        // 'facebook',
+        // 'twitter',
+        // 'github',
+        // 'dribble'
+    },
+        {
+            errorBag: 'Software setup successfully!'
+        });
 };
 
 
