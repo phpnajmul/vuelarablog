@@ -1,25 +1,31 @@
 <script setup>
-import icon from "../../../../../../public/assets/logo.png"
-import search from "../../../../../../public/assets/search.png"
-import lock from "../../../../../../public/assets/lock.png"
-import play from "../../../../../../public/assets/play.png"
-import natural from "../../../../../../public/assets/natural.jpg"
-import down from "../../../../../../public/assets/down.png"
-import career1 from "../../../../../../public/assets/career1.png"
-import career2 from "../../../../../../public/assets/career2.png"
-import career3 from "../../../../../../public/assets/career3.png"
-import career4 from "../../../../../../public/assets/career4.png"
-import career5 from "../../../../../../public/assets/career5.png"
-import career6 from "../../../../../../public/assets/career6.png"
-import states from "../../../../../../public/assets/states.png"
-import meeting from "../../../../../../public/assets/meeting.png"
-import team from "../../../../../../public/assets/team.png"
-import shape from "../../../../../../public/assets/shape.png"
-import facebook from "../../../../../../public/assets/facebook.png"
-import twitter from "../../../../../../public/assets/twitter.png"
-import github from "../../../../../../public/assets/github.png"
-import dribble from "../../../../../../public/assets/dribble.png"
+import icon from "../../../../../../public/frontend/assets/logo.png"
+import search from "../../../../../../public/frontend/assets/search.png"
+import lock from "../../../../../../public/frontend/assets/lock.png"
+import play from "../../../../../../public/frontend/assets/play.png"
+import natural from "../../../../../../public/frontend/assets/natural.jpg"
+import down from "../../../../../../public/frontend/assets/down.png"
+import career1 from "../../../../../../public/frontend/assets/career1.png"
+import career2 from "../../../../../../public/frontend/assets/career2.png"
+import career3 from "../../../../../../public/frontend/assets/career3.png"
+import career4 from "../../../../../../public/frontend/assets/career4.png"
+import career5 from "../../../../../../public/frontend/assets/career5.png"
+import career6 from "../../../../../../public/frontend/assets/career6.png"
+import states from "../../../../../../public/frontend/assets/states.png"
+import meeting from "../../../../../../public/frontend/assets/meeting.png"
+import team from "../../../../../../public/frontend/assets/team.png"
+import shape from "../../../../../../public/frontend/assets/shape.png"
+import facebook from "../../../../../../public/frontend/assets/facebook.png"
+import twitter from "../../../../../../public/frontend/assets/twitter.png"
+import github from "../../../../../../public/frontend/assets/github.png"
+import dribble from "../../../../../../public/frontend/assets/dribble.png"
 import {Head} from "@inertiajs/vue3";
+
+const props = defineProps({
+    allData : Object
+})
+
+console.log('check_props', props.allData)
 
 
 </script>
@@ -52,9 +58,15 @@ import {Head} from "@inertiajs/vue3";
     <!--Hero Section Start-->
     <section class="container mx-auto px-16 py-20 flex flex-col md:flex-row gap-6 justify-between items-center">
         <div>
-            <h1 class="text-md sm:text-md md:text-5xl font-bold pb-6"><span class="text-primary">Tailwind CSS</span> Course Instructor</h1>
-            <h2 class="text-xl sm:text-xl md:text-7xl font-bold text-secondary pb-6">Najmul Hossain</h2>
-            <p class="font-bold">Founder, Coder IT</p>
+            <h1 v-if="props.allData.length > 0" class="text-md sm:text-md md:text-5xl font-bold pb-6">{{ props.allData[0].heading }}</h1>
+            <h1 v-else class="text-red-600 text-xl sm:text-xl md:text-7xl font-bold pb-6">Software Not Setup</h1>
+
+            <h2 v-if="props.allData.length > 0" class="text-xl sm:text-xl md:text-7xl font-bold text-secondary pb-6">{{ props.allData[0].title }}</h2>
+            <h2 v-else class="text-red-600 text-xl sm:text-xl md:text-7xl font-bold pb-6">Software Not Setup</h2>
+
+            <p v-if="props.allData.length > 0" class="font-bold">{{ props.allData[0].cholak }}</p>
+            <p v-else class="text-red-600 font-semibold">Software Not Setup</p>
+
             <div class="flex gap-6 items-center pt-8">
                 <button class="btn-secondary">Get Token</button>
                 <div class="flex gap-2 items-center">
@@ -64,7 +76,8 @@ import {Head} from "@inertiajs/vue3";
             </div>
         </div>
         <div>
-            <img :src="natural" alt="Natural" class="rounded-full border-2 border-primary w-[400px] h-[400px]"/>
+<!--            <img :src="natural" alt="Natural" class="rounded-full border-2 border-primary w-[400px] h-[400px]"/>-->
+            <img :src="props.allData.length > 0 ? `/upload/tenant/backend/settings/${props.allData[0].image}` : '/upload/no_image.jpg' " alt="Natural" class="rounded-full border-2 border-primary w-[400px] h-[400px]">
         </div>
     </section>
     <!--Hero Section END-->
@@ -213,7 +226,8 @@ import {Head} from "@inertiajs/vue3";
             <div>
                 <div class="flex items-center gap-2 pb-6">
                     <img :src="icon" alt="" class="w-[20px] h-[20px]"/>
-                    <h1 class="font-bold">Easy IT</h1>
+                    <h1 v-if="!!props.allData.footer_logo_title" class="font-bold">{{ props.allData.footer_logo_title }}</h1>
+                    <p v-else class="text-red-600 font-semibold">Software Not Setup</p>
                 </div>
                 <div class="flex flex-col gap-2">
                     <p>Terms of use   |   Privacy</p>

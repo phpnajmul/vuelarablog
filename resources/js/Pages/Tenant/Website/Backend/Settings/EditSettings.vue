@@ -5,53 +5,43 @@ import Sidebar from "@/Pages/Tenant/Website/Backend/Layouts/Sidebar.vue";
 import Header from "@/Pages/Tenant/Website/Backend/Layouts/Header.vue";
 import InputError from "@/Components/InputError.vue";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
-import {onMounted, ref} from "vue";
 
 
 const props = defineProps({
     settings: Object
 })
 
-// const forForm = props.settings[0];
 
-const form = useForm({
-    logo: '',
-    heading: '',
-    title: '',
-    cholak: '',
-    image: '',
-    footer_logo: '',
-    footer_logo_title: '',
-    facebook: '',
-    twitter: '',
-    github: '',
-    dribble: '',
-})
-
-
-
-
+//console.log('myTest',props.settings)
 
 // const form = useForm({
-//     logo: props.settings[0].logo,
-//     heading: props.settings[0].heading,
-//     title: props.settings[0].title,
-//     cholak: props.settings[0].cholak,
-//     image: props.settings[0].image,
-//     footer_logo: props.settings[0].footer_logo,
-//     footer_logo_title: props.settings[0].footer_logo_title,
-//     facebook: props.settings[0].facebook,
-//     twitter: props.settings[0].twitter,
-//     github: props.settings[0].github,
-//     dribble: props.settings[0].dribble,
+//     logo: '',
+//     heading: '',
+//     title: '',
+//     cholak: '',
+//     image: '',
+//     footer_logo: '',
+//     footer_logo_title: '',
+//     facebook: '',
+//     twitter: '',
+//     github: '',
+//     dribble: '',
 // })
 
 
-// const submit = () => {
-//     router.post('/users', form, {
-//         errorBag: 'Create Successfully',
-//     })
-// };
+const form = useForm({
+    logo: props.settings[0].logo,
+    heading: props.settings[0].heading,
+    title: props.settings[0].title,
+    cholak: props.settings[0].cholak,
+    image: props.settings[0].image,
+    footer_logo: props.settings[0].footer_logo,
+    footer_logo_title: props.settings[0].footer_logo_title,
+    facebook: props.settings[0].facebook,
+    twitter: props.settings[0].twitter,
+    github: props.settings[0].github,
+    dribble: props.settings[0].dribble,
+})
 
 
 </script>
@@ -72,8 +62,8 @@ const form = useForm({
                 <div class="bg-blue-50 text-xl text-gray-500 p-4 mb-4 rounded-md">
                     <h1>Software Menu<span> > </span>Software Setup</h1>
                 </div>
-            <form  @submit.prevent="submit">
-                <div v-if="props.settings > 0" class="bg-white shadow-md py-6 px-10 rounded-md">
+            <form  @submit.prevent="form.post(route('all.setting.update',props.settings[0].id))">
+                <div v-if="props.settings.length > 0" class="bg-white shadow-md py-6 px-10 rounded-md">
                     <div class="border-b border-gray-900/10">
                         <h2 class="text-base font-semibold leading-7 text-gray-900">Settings Information</h2>
                         <p class="mt-1 text-sm leading-6 text-gray-600">You can change your website everything.</p>
@@ -86,7 +76,7 @@ const form = useForm({
                                         class="relative name m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
                                         type="file"
                                         @input="form.logo = $event.target.files[0]" />
-
+                                    <img :src="!!form.logo ? `/upload/tenant/backend/settings/${form.logo}` : '/upload/no_image.jpg' " class="w-16 h-16 border border-white shadow-md mt-1 rounded-md">
                                     <InputError class="mt-2" :message="form.errors.logo" />
                                 </div>
                             </div>
@@ -125,6 +115,7 @@ const form = useForm({
                                         class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
                                         type="file"
                                         @input="form.image = $event.target.files[0]" />
+                                    <img :src="!!form.image ? `/upload/tenant/backend/settings/${form.image}` : '/upload/no_image.jpg' " class="w-16 h-16 border border-white shadow-md mt-1 rounded-md">
                                     <InputError class="mt-2" :message="form.errors.image" />
                                 </div>
                             </div>
@@ -137,6 +128,7 @@ const form = useForm({
                                         class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
                                         type="file"
                                         @input="form.footer_logo = $event.target.files[0]" />
+                                    <img :src="!!form.footer_logo ? `/upload/tenant/backend/settings/${form.footer_logo}` : '/upload/no_image.jpg' " class="w-16 h-16 border border-white shadow-md mt-1 rounded-md">
                                     <InputError class="mt-2" :message="form.errors.footer_logo" />
                                 </div>
                             </div>

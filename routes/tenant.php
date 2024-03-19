@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Tenant\Backend\SettingsController;
+use App\Http\Controllers\Tenant\Frontend\FrontendController;
 use App\Http\Controllers\Tenant\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,9 +27,11 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->group(function () {
-    Route::get('/', function () {
-        return Inertia::render('Tenant/Website/Frontend/Welcome');
-    });
+
+
+    //Frontend routes start
+    Route::get('/', [FrontendController::class, 'index'])->name('/');
+    //Frontend routes end
 
 
     Route::get('/dashboard', function () {
@@ -49,12 +52,15 @@ Route::middleware([
 
     // Settings all routes Start
     Route::prefix('settings')->group(function (){
-       Route::get('all', [SettingsController::class, 'allSettings'])->name('all.settings');
-       Route::post('all/store', [SettingsController::class, 'storeAllSettings'])->name('all.setting.store');
+        Route::get('all', [SettingsController::class, 'allSettings'])->name('all.settings');
+        Route::post('all/store', [SettingsController::class, 'storeAllSettings'])->name('all.setting.store');
         Route::get('all/edit', [SettingsController::class, 'editAllSettings'])->name('all.setting.edit');
+        Route::post('all/update/{id}', [SettingsController::class, 'updateAllSettings'])->name('all.setting.update');
     });
-
     // Settings all routes End
+
+
+
 
 
 
